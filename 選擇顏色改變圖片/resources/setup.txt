@@ -1,0 +1,11 @@
+素白#F5F4F2
+墨黑#919194
+慕紅#C9202C
+皓白#F9F8F6
+霧綠#8DAAA6
+曜黑#676970
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@300;400;500;600;700&family=Ubuntu:wght@400;500&display=swap');
+
+
+font-family: 'Oswald', sans-serif;

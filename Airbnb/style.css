@@ -32,6 +32,10 @@ body.active{
     overflow: hidden;
 }
 
+a:visited{
+    color: #000;
+}
+
 
 /*=============== HEADER ===============*/
 .header{

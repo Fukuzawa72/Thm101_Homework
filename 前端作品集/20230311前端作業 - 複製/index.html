@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--=============== Iconscout ===============-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!--=============== GOOGLE ICON ===============-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./style.css">
+    <!--=============== Favicon ===============-->
+    <link rel="shortcut icon" href="./Resources/Airbnb_icon.ico" type="image/x-icon">
+    
+    <title>Airbnb</title>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header__logo">
+            <img src="./Resources/airbnb-logo.svg" alt="">
+        </div>
+
+        <div class="header__search">
+                <span class="anywhere">Anywhere</span>
+                <span class="line"></span>
+                <span class="anyweek">Any week</span>
+                <span class="line"></span>
+                <span class="addguest">Add guest</span>
+                <span class="search__icon-container icons">
+                    <i class="uil uil-search search__icon"></i>
+                </span>
+        </div>
+
+        <div class="header__info">
+            <!-- <div class="global__icon icons">
+                <div>Airbnb your home</div>
+                <i class="uil uil-globe"></i>
+            </div> -->
+
+            <div class="personal__icon icons">
+                <i class="uil uil-bars bars"></i>
+                <div class="bg">
+                    <i class="uil uil-user user"></i>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- ==================== TRAVEL GENRE ==================== -->
+    <div class="genre__selector">
+        <ul>
+            <li>
+                <img src="./Resources/campaign.jpg" alt="" class="genre__icons">
+                <span>Campaign</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/castle.jpg" alt="" class="genre__icons">
+                <span>Castle</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Japanese style house.jpg" alt="" class="genre__icons">
+                <span>Roykans</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Log cabin.jpg" alt="" class="genre__icons">
+                <span>Cabins</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/mountain.jpg" alt="" class="genre__icons">
+                <span>Hicking</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Arctic.jpg" alt="" class="genre__icons">
+                <span>Arctic</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Caves.jpg" alt="" class="genre__icons">
+                <span>Caves</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Desert.jpg" alt="" class="genre__icons">
+                <span>Desert</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Grand Pianoes.jpg" alt="" class="genre__icons">
+                <span>Grand Pianoes</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Hanoks.jpg" alt="" class="genre__icons">
+                <span>Hanoks</span>
+                <div class="bottom__line"></div>
+            </li>
+            <li>
+                <img src="./Resources/Trending.jpg" alt="" class="genre__icons">
+                <span>Trending</span>
+                <div class="bottom__line"></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ==================== CARDS ==================== -->
+    <div class="cards__container" id="cardsContainer">
+        <div class="box">
+            <img src="./Resources/img10.webp" alt="img1">
+            <div class="content">
+                <div class="price">
+                    <span>$1000</span>
+                    <span class="tag">For sale</span>
+                </div>
+                <div class="loca">
+                    <h6>Apartment Berlin,Deutch</h6>
+                    <div style="font-size: 3px;">
+                        <span class="material-symbols-outlined" style="font-size: 3px; margin-right: 5px;">
+                            location_on </span><span style="font-size: 5px;">29 Terrace Rd, BH2 5EL</span>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="subinfo">
+                    <div>
+                        <span class="material-symbols-outlined" style="color: gray fz; font-size:5px;">straighten</span>
+                        <p>1634 </p><span>qrt</span>
+                    </div>
+                    
+                    <div>
+                        <span class="material-symbols-outlined" style="color: gray fz; font-size:5px;">bed</span>
+                        <p>5</p>
+                        <span>beds</span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined" style="color: gray fz; font-size:5px;">shower</span>
+                        <p>3</p>
+                        <span>bath</span>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="contact">
+                    <img src="./Resources/img3.jpg" alt="">
+                    <div class="contact__info">
+                        <p>Jennifer Bloom</p>
+                        <p>+886 987 654 321</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- ==================== POPUP ==================== -->
+    <div class="popup__background">
+        <div class="popup__container" id="popup">
+            <div class="close">
+                <i class="uil uil-times"></i>
+            </div>
+        
+            <div class="popup">
+                <div class="popup-info">
+                    <div class="pricing">$4960 <span>晚</span></div>
+                    <div class="ranking">
+                        <i class="uil uil-star"></i>4.8 · 
+                        <span>500則評價</span>
+                    </div>
+                </div>
+                <table class="selector">
+                    <tr class="dates">
+                        <td>
+                            <input type="date"  value="2023-03-12" name="" class="date">
+                            <span class="checkin">入住</span>
+                        </td>
+                        <td>
+                            <input type="date"  value="2023-03-12" name="" class="date">
+                            <span class="checkout">退房</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="select">
+                            <select name="" id="" >
+                                <option value="">1位</option>
+                                <option value="">2位</option>
+                                <option value="">3位</option>
+                                <option value="">4位</option>
+                                <option value="">5位</option>
+                            </select>
+                            <span class="people">房客</span>
+                        </td>
+                    </tr>
+                </table>
+                <a href="https://www.airbnb.com.tw/book/stays/5226423?numberOfAdults=1&numberOfChildren=0&numberOfInfants=0&numberOfPets=0&checkin=2023-05-27&checkout=2023-06-01&guestCurrency=TWD&productId=5226423&isWorkTrip=false&numberOfGuests=1">
+                    <input type="button" value="預訂" class="booking">
+                </a>
+                <p class="p1">你暫時不會被收費</p>
+                <div class="p2">
+                    <p>4900 USD X 5晚</p>
+                    <p>$24,500</p>
+                </div>
+                <hr>
+                <div class="p3">
+                    <P>稅前總價</P>
+                    <p>$24,500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="left">
+            <span>© 2023 Airbnb, Inc.</span>
+            <span>·Terms</span>
+            <span>Sitemap</span>
+            <span>Privacy</span>
+            <span>Your Privacy Choices</span>
+            <span>Destinations</span>
+        </div>
+        <div class="right">
+                <i class="uil uil-globe"></i>
+                English (US)
+            <span>TWD</span>
+            <span>Support & resources</span>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

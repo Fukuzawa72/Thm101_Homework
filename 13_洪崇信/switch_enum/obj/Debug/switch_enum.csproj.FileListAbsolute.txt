@@ -1,8 +1,0 @@
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\bin\Debug\switch_enum.exe.config
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\bin\Debug\switch_enum.exe
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\bin\Debug\switch_enum.pdb
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\obj\Debug\switch_enum.csproj.AssemblyReference.cache
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\obj\Debug\switch_enum.csproj.SuggestedBindingRedirects.cache
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\obj\Debug\switch_enum.csproj.CoreCompileInputs.cache
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\obj\Debug\switch_enum.exe
-C:\Users\chong\OneDrive\桌面\13_洪崇信\switch_enum\obj\Debug\switch_enum.pdb

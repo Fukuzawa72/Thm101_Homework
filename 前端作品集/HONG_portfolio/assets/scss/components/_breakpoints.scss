@@ -1,0 +1,90 @@
+@media screen and (min-width: 720px) {
+    .section{
+        padding: $header-height + 2rem 0 1rem;
+    }
+
+    .nav{
+        &__link{
+            column-gap: 1rem;
+            font-size: $nav-small-font-size * 1.5;
+    
+            & i{
+                font-size: 1.15rem * 1.5;
+            }
+        }
+
+        &__img{
+            width: 70px * 1.5;
+        }
+    
+        &__mask{
+            width: 80px * 1.5;
+            height: 80px * 1.5;
+            background: linear-gradient(
+                224deg,
+                hsla(277, 81%, 55%, 1) -2%,
+                hsla(277, 97%, 83%, 1) 97%);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        &__greetig{
+            font-size: 1.5rem;
+        }
+
+        &__name{
+            font-size: 2rem;
+        }
+
+    }
+
+
+    .header{
+        &__nav{
+            height: $header-height + 1rem;
+            padding: 1rem;
+        }
+        
+        &__logo,
+        &__toggle{
+            color: $nav-title-color;
+            font-size: 2rem;
+        }
+    
+        &__logo{
+            font-weight: 500;
+        }
+    }
+
+    .show-menu {
+        transform: translate(40%);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .header{
+        
+        &__nav{
+            height: $header-height;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: auto;
+        }
+    
+        &__logo,
+        &__toggle{
+            color: $nav-title-color;
+            font-size: 1.3rem;
+        }
+    
+        &__logo{
+            font-weight: 500;
+        }
+    
+    }
+}

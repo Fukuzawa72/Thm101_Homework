@@ -1,0 +1,8 @@
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\bin\Debug\codeWars.exe.config
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\bin\Debug\codeWars.exe
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\bin\Debug\codeWars.pdb
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\obj\Debug\codeWars.csproj.AssemblyReference.cache
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\obj\Debug\codeWars.csproj.SuggestedBindingRedirects.cache
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\obj\Debug\codeWars.csproj.CoreCompileInputs.cache
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\obj\Debug\codeWars.exe
+C:\Users\chong\OneDrive\桌面\13_洪崇信\codeWars\obj\Debug\codeWars.pdb

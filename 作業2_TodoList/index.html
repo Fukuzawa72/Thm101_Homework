@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ICON -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS --> 
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="todo__container">
+        <img src="./resources/DinoTaeng.gif" class="dino" alt="">
+        <h1 class="todo__title">Todo List</h1>
+        <div class="todo__inputs">
+            <div class="input__box">
+                <input type="text" placeholder="今天我想來點..." class="todo__input" id="todo-input">
+            </div>
+            <button class="todo__button button" id="todo-button">新增</button>
+        </div>
+
+        <ul class="todo__lists" id="todo-lists">
+            <li class="todo__item">
+                <i class='bx bx-circle'></i>
+                <p>跑步</p>
+                <i class='bx bxs-trash-alt' id="remove"></i>
+            </li>
+        </ul>
+        <i class='bx bxs-chevron-down' id="arrow"></i>
+    </div>
+    <!-- ==================== POPUP ==================== -->
+    <div class="popup__background">
+        <div class="popup__container" id="popup">
+            <div class="pop">
+                <button class="pop__remove button" id="pop-remove">刪除</button>
+                <button class="pop__reserve button" id="pop-reserve">保留</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>

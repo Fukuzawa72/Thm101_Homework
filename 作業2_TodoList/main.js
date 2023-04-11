@@ -85,12 +85,22 @@ function showArrow(){
 //顯示提示文字的function
 function showHint(){
     if(list.children.length === 0){
-        let p = document.createElement("p")
-        p.innerText ="為今天加點有趣的事情吧~"
+        let img = document.createElement("img")
+        img.src = "./resources/DinoTaeng2.gif"
+        img.setAttribute("class", "dino2")
+
+        let p = document.createElement("span")
+        p.innerText ="今天想來點什麼呢~"
         p.setAttribute("id", "hint")
+
+        list.append(img)
         list.append(p)
+
+        list.classList.add("organize")
     }else if(list.children.length > 0 && list.querySelector("#hint") !== null){
         list.querySelector("#hint").remove()
+        list.querySelector(".dino2").remove()
+        list.classList.remove("organize")
     }
 }
 

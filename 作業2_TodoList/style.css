@@ -108,6 +108,11 @@ body {
     color: gray;
 }
 
+.organize{
+    align-items: center;
+    justify-content: center;
+}
+
 /*=============== POPUP ===============*/
 .popup__background.active {
     position: fixed;
@@ -210,39 +215,40 @@ body {
     font-size: 30px;
 }
 
-.dino{
+.dino {
     position: absolute;
     left: 0;
     top: -45px;
     transform: rotateY(0deg);
     width: 50px;
     height: 50px;
-    animation-name: walkAround, turnOver;
-    animation-duration: 90s, 40s;
-    animation-delay: 0s, 45s;
-    animation-fill-mode: backwards, forwards;
-    animation-iteration-count: 1;
-    transition-duration: 0s;
+    cursor: pointer;
+    animation-name: move-and-rotate;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
-@keyframes walkAround {
-    0%{
-        left: 0;
-    }
-    50%{
-        left: 300px;
-    }
-    100%{
-        left: 0;
-        transform: rotateY(0deg);
-    }
+.dino2{
+    display: inline;
+    width: 100px;
+    height: 100px;
 }
 
-@keyframes turnOver {
-    0%{
-        transform: rotateY(180deg);
+@keyframes move-and-rotate {
+    0% {
+        transform: translateX(0) rotateY(0);
     }
-    100%{
-        transform: rotateY(0deg);
+
+    50% {
+        transform: translateX(300px) rotateY(0);
+    }
+
+    51% {
+        transform: translateX(300px) rotateY(180deg);
+    }
+
+    100% {
+        transform: translateX(0) rotateY(180deg);
     }
 }

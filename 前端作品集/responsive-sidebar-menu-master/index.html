@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <title>Sidebar menu responsive</title>
+</head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header__toggle">
+            <i class='bx bx-menu' id="header-toggle"></i>
+        </div>
+
+        <div class="header__img">
+            <img src="assets/img/perfil.jpg" alt="">
+        </div>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav__logo">
+                    <i class='bx bx-layer nav__logo-icon'></i>
+                    <span class="nav__logo-name">Bedimcode</span>
+                </a>
+
+                <div class="nav__list">
+                    <a href="#" class="nav__link active">
+                        <i class='bx bx-grid-alt nav__icon'></i>
+                        <span class="nav__name">Dashboard</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <i class='bx bx-user nav__icon'></i>
+                        <span class="nav__name">Users</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <i class='bx bx-message-square-detail nav__icon'></i>
+                        <span class="nav__name">Messages</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <i class='bx bx-bookmark nav__icon'></i>
+                        <span class="nav__name">Favorites</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <i class='bx bx-folder nav__icon'></i>
+                        <span class="nav__name">Data</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <i class='bx bx-bar-chart-alt-2 nav__icon'></i>
+                        <span class="nav__name">Analytics</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="#" class="nav__link">
+                <i class='bx bx-log-out nav__icon'></i>
+                <span class="nav__name">Log Out</span>
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="dashboard" id="dashboard">
+            <!-- <div class="mainInfo">
+                <div class="box1 subinfo">
+                    <h1 class="NumberTitle">訂單數</h1>
+                    <p class="Number">500+</p>
+                </div>
+                <div class="box2 subinfo">
+                    <h1 class="NumberTitle">已完成</h1>
+                    <p class="Number">200</p>
+                </div>
+                <div class="box3 subinfo">
+                    <h1 class="NumberTitle">待處理</h1>
+                    <p class="Number">331+</p>
+                </div>
+                <div class="box4 subinfo">
+                    <h1 class="NumberTitle">取消</h1>
+                    <p class="Number">5</p>
+                </div>
+            </div> -->
+            <div id="wrapper">
+                <div class="content-area">
+                  <div class="container-fluid">
+                    <div class="main">
+                      <div class="row mt-4">
+                        <div class="col-md-5">
+                          <div class="box shadow">
+                            <div id="bar"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="box shadow">
+                            <div id="donutTop"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="box shadow">
+                            <div id="radialBar1"></div>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="row mt-4 mb-5">
+                        <div class="col-md-6">
+                          <div class="row sparkboxes mt-4">
+                            <div class="col-md-6">
+                              <div class="box box1">
+                                <div id="spark1"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="box box2">
+                                <div id="spark2"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row sparkboxes mt-3">
+                            <div class="col-md-6">
+                              <div class="box box3">
+                                <div id="spark3"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="box box4">
+                                <div id="spark4"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="box body-bg">
+                            <div
+                              id="area-adwords"
+                              style="background: #fff"
+                              class="shadow"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        
+    </main>
+    <!--===== MAIN JS =====-->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./assets/js/CHARTJS.JS"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

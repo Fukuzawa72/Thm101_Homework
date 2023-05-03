@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./model.css">
+</head>
+
+<body>
+    <div class="Recent-order col-8">
+        <h2>商品管理</h2>
+        <div class="tableFunction col-12">
+            <div class="col-4">
+                <div class="title">Search for Orders</div>
+                <div class="content">
+                    <div class="searchBar">
+                        <div class="inputWrapper">
+                            <i class='bx bx-search-alt-2 searchIcon'></i>
+                            <input type="text" class="inputSearch" placeholder="Search..." v-model="keyword">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="title">Status</div>
+                <div class="content">
+                    <div class="StatusBar">
+                        <select>
+                            <option>All</option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Hamster</option>
+                            <option>Parrot</option>
+                            <option>Spider</option>
+                            <option>Goldfish</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="title">Category</div>
+                <div class="content">
+                    <div class="StatusBar">
+                        <select>
+                            <option>View all</option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Hamster</option>
+                            <option>Parrot</option>
+                            <option>Spider</option>
+                            <option>Goldfish</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>產品圖片</th>
+                    <th>產品名稱</th>
+                    <th>種類</th>
+                    <th>成本<i class='bx bxs-sort-alt' ></i></th>
+                    <th>售價<i class='bx bxs-sort-alt' ></i></th>
+                    <th @click="sortType=2">庫存量<i class='bx bxs-sort-alt'></i></th>
+                    <th>狀態</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td><img src="./resources/banana.jpg" class="productImg" alt=""></td>
+                    <td>洋芋片</td>
+                    <td>零食</td>
+                    <td>$20</td>
+                    <td>$30</td>
+                    <td>200</td>
+                    <td><span class="active">在庫</span></td>                    
+                </tr>-->
+                <tr v-for="p in filterProducts">
+                    <td v-for="item in p">
+                        <img v-if="item === p.img" :src="item" class="productImg">
+                        <span v-else-if="item === p.status" :class="item">{{item == "active"? "在庫":"庫存不足"}}</span>
+                        <i v-else-if="item === p.icon" :class="item"></i>
+                        <span v-else>{{item}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal__container" id="modal-container">
+        <div class="modal__content">
+            <div class="modal__close close-modal" title="Close">
+                <i class='bx bx-x'></i>
+            </div>
+
+            <img src="assets/img/star-trophy.png" alt="" class="modal__img">
+
+            <h1 class="modal__title">商品管理</h1>
+            <p class="modal__description">修改商品明細</p>
+
+            <div class="model__product">
+                <div>
+                    <span>ID</span>
+                    <input type="text" class="productItemInp" value="1">
+                </div>
+                <div>
+                    <span>圖片</span>
+                    <input type="text" class="productItemInp" value="./resources/banana.jpg">
+                </div>
+                <div>
+                    <span>名稱</span>
+                    <input type="text" class="productItemInp" value="葡萄">
+                </div>
+                <div>
+                    <span>種類</span>
+                    <input type="text" class="productItemInp" value="水果">
+                </div>
+                <div>
+                    <span>成本</span>
+                    <input type="text" class="productItemInp" value="$20">
+                </div>
+                <div>
+                    <span>價格</span>
+                    <input type="text" class="productItemInp" value="$50">
+                </div>
+                <div>
+                    <span>數量</span>
+                    <input type="text" class="productItemInp" value="200">
+                </div>
+            </div>
+
+            <button class="modal__button modal__button-width">
+                View status
+            </button>
+
+            <button class="modal__button-link close-modal">
+                Close
+            </button>
+        </div>
+    </div>
+
+
+    <script src="./vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script>
+        new Vue({
+            el: ".Recent-order",
+            data: {
+                keyword:"",
+                sortType:"0",
+                products: [
+                    { id: "1", img: "./resources/grape.jpg", Name: "葡萄", category: "水果", cost: "$20", price: "$50", amount: "200", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "2", img: "./resources/grava.jpg", Name: "木瓜", category: "水果", cost: "$30", price: "$40", amount: "10", status: "frozen", icon: "bx bxs-edit tableIcon" },
+                    { id: "3", img: "./resources/kiwi.jpg", Name: "奇異果", category: "水果", cost: "$40", price: "$90", amount: "25", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "4", img: "./resources/melon.jpg", Name: "哈密瓜", category: "水果", cost: "$50", price: "$80", amount: "9", status: "frozen", icon: "bx bxs-edit tableIcon" },
+                    { id: "5", img: "./resources/ownlei.jpg", Name: "鳳梨", category: "水果", cost: "$60", price: "$70", amount: "90", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "6", img: "./resources/banana.jpg", Name: "香蕉", category: "水果", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                ]
+            },
+            computed:{
+                filterProducts(){
+                     const arr = this.products.filter(p => {
+                        return p.Name.indexOf(this.keyword) !== -1;
+                    })
+
+                    //判斷是否需要排序
+                    if(this.sortType){
+                        arr.sort((p1,p2) => {
+                            return this.sortType === 1? p2.age-p1.age:p1.age-p2.age
+                        })
+                    }
+                    return arr
+                }
+            }
+        })
+    </script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
+
+
+<!-- <div class="filter">
+                <i class='bx bx-filter'></i>
+                More Filter
+            </div> -->
+<!-- <div class="Sort">
+                    <i class='bx bx-sort-a-z searchIcon'></i>Sort
+            </div> -->

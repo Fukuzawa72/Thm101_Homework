@@ -84,13 +84,14 @@ a {
 
 body {
     position: relative;
-    margin: var(--header-height) 0 0 0;
     padding: 0 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     transition: .5s;
     display: grid;
     place-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .Recent-order {
@@ -109,18 +110,28 @@ body {
     font-weight: bold;
 }
 
-table thead tr{
+.table__container {
+    height: 600px;
+    overflow: auto;
+}
+
+table thead {
+    position: sticky;
+    top: 0;
+}
+
+table thead tr {
     border-bottom: 1px solid #000;
     height: 4rem;
 }
 
-table thead tr th{
+table thead tr th {
     background: #f2f2f2;
     text-align: center;
     padding-left: 1rem;
 }
 
-table td{
+table td {
     padding: 1rem;
     text-align: center;
 }
@@ -139,11 +150,17 @@ table td:nth-child(3){
 table td:nth-child(4){
     width: 10%;
 }
-table td:nth-child(5){
-    width: 10%;
-} */
+ */
 
-table tbody tr{
+table td:nth-last-child(2)>span {
+    display: inline-block;
+}
+
+table thead tr th{
+    min-width: 5rem;
+}
+
+table tbody tr {
     height: 2.8rem;
     border-bottom: 1px solid rgb(128, 128, 128);
 }
@@ -152,7 +169,7 @@ table tbody tr:last-child {
     border-bottom: none;
 }
 
-table tbody tr:hover{
+table tbody tr:hover {
     background: #e1e1e1;
     cursor: pointer;
 }
@@ -212,18 +229,18 @@ select {
     margin-right: .5rem;
 }
 
-.tableIcon{
+.tableIcon {
     font-size: 1.5rem;
 }
 
 /* Product Image */
-.productImg{
+.productImg {
     max-width: 5rem;
     max-height: 5rem;
 }
 
 /* Status */
-.active{
+.active {
     background: green;
     color: #fff;
     width: fit-content;
@@ -233,7 +250,7 @@ select {
     padding: 10px 20px;
 }
 
-.frozen{
+.frozen {
     background: rgb(218, 14, 14);
     color: #fff;
     width: fit-content;
@@ -244,11 +261,11 @@ select {
 }
 
 /* Model Product */
-.model__product{
+.model__product {
     margin-bottom: 1rem;
 }
 
-.productItemInp{
+.productItemInp {
     width: 80%;
     border: none;
     outline: none;
@@ -258,10 +275,35 @@ select {
     margin-bottom: 1rem;
 }
 
-/*     width: 90%;
+/* Sort Icon */
+.sortIcon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/*===== Scrollbar =====*/
+
+/* 調整滾動條的寬度 */
+/* 調整滾動條的寬度 */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* 調整滾動條的背景顏色 */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/*===== Arrow =====*/
+.arrow-down {
+    width: 100%;
+}
+
+.arrow-down i {
+    background-color: #e1e1e1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
-    padding: 1rem;
-    border-radius: 1rem; */
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 0 0 1rem 1rem;
+}

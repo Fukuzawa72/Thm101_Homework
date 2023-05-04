@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <div class="Recent-order col-8">
+    <div class="Recent-order col-12 col-md-6 ">
         <h2>商品管理</h2>
         <div class="tableFunction col-12">
             <div class="col-4">
-                <div class="title">Search for Orders</div>
+                <div class="title">產品名稱</div>
                 <div class="content">
                     <div class="searchBar">
                         <div class="inputWrapper">
@@ -29,74 +29,76 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="title">Status</div>
+                <div class="title">狀態</div>
                 <div class="content">
                     <div class="StatusBar">
-                        <select>
-                            <option>All</option>
-                            <option>Dog</option>
-                            <option>Cat</option>
-                            <option>Hamster</option>
-                            <option>Parrot</option>
-                            <option>Spider</option>
-                            <option>Goldfish</option>
+                        <select v-model="selectedStatus">
+                            <option value="all">全部</option>
+                            <option value="active">在庫</option>
+                            <option value="frozen">庫存不足</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="col-4">
-                <div class="title">Category</div>
+                <div class="title">種類</div>
                 <div class="content">
                     <div class="StatusBar">
-                        <select>
-                            <option>View all</option>
-                            <option>Dog</option>
-                            <option>Cat</option>
-                            <option>Hamster</option>
-                            <option>Parrot</option>
-                            <option>Spider</option>
-                            <option>Goldfish</option>
+                        <select v-model="selectedCategory">
+                            <option value="全部">全部</option>
+                            <option value="零食">零食</option>
+                            <option value="水果">水果</option>
+                            <option value="蔬菜">蔬菜</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>產品圖片</th>
-                    <th>產品名稱</th>
-                    <th>種類</th>
-                    <th>成本<i class='bx bxs-sort-alt' ></i></th>
-                    <th>售價<i class='bx bxs-sort-alt' ></i></th>
-                    <th @click="sortType=2">庫存量<i class='bx bxs-sort-alt'></i></th>
-                    <th>狀態</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <tr>
-                    <td>1</td>
-                    <td><img src="./resources/banana.jpg" class="productImg" alt=""></td>
-                    <td>洋芋片</td>
-                    <td>零食</td>
-                    <td>$20</td>
-                    <td>$30</td>
-                    <td>200</td>
-                    <td><span class="active">在庫</span></td>                    
-                </tr>-->
-                <tr v-for="p in filterProducts">
-                    <td v-for="item in p">
-                        <img v-if="item === p.img" :src="item" class="productImg">
-                        <span v-else-if="item === p.status" :class="item">{{item == "active"? "在庫":"庫存不足"}}</span>
-                        <i v-else-if="item === p.icon" :class="item"></i>
-                        <span v-else>{{item}}</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table__container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>產品圖片</th>
+                        <th>產品名稱</th>
+                        <th>種類</th>
+                        <th>成本<i class='bx bxs-sort-alt sortIcon'></i></th>
+                        <th>售價<i class='bx bxs-sort-alt sortIcon'></i></th>
+                        <th>庫存量<i @click="sortType === 1? sortType =2: sortType = 1"
+                                class='bx bxs-sort-alt sortIcon'></i>
+                        </th>
+                        <th>狀態</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td><img src="./resources/banana.jpg" class="productImg" alt=""></td>
+                        <td>洋芋片</td>
+                        <td>零食</td>
+                        <td>$20</td>
+                        <td>$30</td>
+                        <td>200</td>
+                        <td><span class="active">在庫</span></td>                    
+                    </tr>-->
+                    <tr v-for="p in filterProducts">
+                        <td v-for="item in p">
+                            <img v-if="item === p.img" :src="item" class="productImg">
+                            <span v-else-if="item === p.status" :class="item">{{item == "active"? "庫存充足":"庫存不足"}}</span>
+                            <i v-else-if="item === p.icon" :class="item"></i>
+                            <span v-else>{{item}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="arrow-down">
+            <i class='bx bx-chevrons-down'></i>
+        </div>
     </div>
+
+
 
     <div class="modal__container" id="modal-container">
         <div class="modal__content">
@@ -150,7 +152,6 @@
         </div>
     </div>
 
-
     <script src="./vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
@@ -159,27 +160,75 @@
         new Vue({
             el: ".Recent-order",
             data: {
-                keyword:"",
-                sortType:"0",
+                keyword: "",
+                sortType: "0",
+                selectedStatus: "all",
+                selectedCategory: "全部",
                 products: [
                     { id: "1", img: "./resources/grape.jpg", Name: "葡萄", category: "水果", cost: "$20", price: "$50", amount: "200", status: "active", icon: "bx bxs-edit tableIcon" },
                     { id: "2", img: "./resources/grava.jpg", Name: "木瓜", category: "水果", cost: "$30", price: "$40", amount: "10", status: "frozen", icon: "bx bxs-edit tableIcon" },
                     { id: "3", img: "./resources/kiwi.jpg", Name: "奇異果", category: "水果", cost: "$40", price: "$90", amount: "25", status: "active", icon: "bx bxs-edit tableIcon" },
                     { id: "4", img: "./resources/melon.jpg", Name: "哈密瓜", category: "水果", cost: "$50", price: "$80", amount: "9", status: "frozen", icon: "bx bxs-edit tableIcon" },
                     { id: "5", img: "./resources/ownlei.jpg", Name: "鳳梨", category: "水果", cost: "$60", price: "$70", amount: "90", status: "active", icon: "bx bxs-edit tableIcon" },
-                    { id: "6", img: "./resources/banana.jpg", Name: "香蕉", category: "水果", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "6", img: "./resources/chocolate.jpg", Name: "好吃巧克力", category: "零食", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "7", img: "./resources/chocolate (2).jpg", Name: "賊好吃巧克力", category: "零食", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "8", img: "./resources/chocolate (3).jpg", Name: "巨好吃巧克力", category: "零食", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "9", img: "./resources/chocolate (4).jpg", Name: "快融化了巧克力", category: "零食", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "10", img: "./resources/nut.jpg", Name: "堅果", category: "零食", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "11", img: "./resources/sanke.jpg", Name: "洋芋片", category: "零食", cost: "$50", price: "$60", amount: "10", status: "frozen", icon: "bx bxs-edit tableIcon" },
+                    { id: "12", img: "./resources/sanke (2).jpg", Name: "奇多", category: "蔬菜", cost: "$50", price: "$60", amount: "10", status: "frozen", icon: "bx bxs-edit tableIcon" },
+                    { id: "13", img: "./resources/sanke (3).jpg", Name: "多利多汁", category: "蔬菜", cost: "$50", price: "$60", amount: "10", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "14", img: "./resources/sanke (4).jpg", Name: "樂事", category: "蔬菜", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "15", img: "./resources/sanke (5).jpg", Name: "香草樂事", category: "蔬菜", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
+                    { id: "16", img: "./resources/sanke (6).jpg", Name: "是我啦哈哈樂事", category: "蔬菜", cost: "$50", price: "$60", amount: "40", status: "active", icon: "bx bxs-edit tableIcon" },
                 ]
             },
-            computed:{
-                filterProducts(){
-                     const arr = this.products.filter(p => {
+            computed: {
+                filterProducts() {
+                    //搜尋篩選
+                    let arr = this.products.filter(p => {
                         return p.Name.indexOf(this.keyword) !== -1;
                     })
+                    //用狀態篩選
+                    switch (this.selectedStatus) {
+                        case "all":
+                            break;
+                        case "active":
+                            arr = this.products.filter(p => {
+                                return p.status.indexOf(this.selectedStatus) !== -1
+                            })
+                            break;
+                        case "frozen":
+                            arr = this.products.filter(p => {
+                                return p.status.indexOf(this.selectedStatus) !== -1;
+                            })
+                            break;
+                    }
+                    //用種類篩選
+                    switch (this.selectedCategory) {
+                        case "全部":
+                            break;
+                        case "零食":
+                            arr = arr.filter(p => {
+                                return p.category.indexOf(this.selectedCategory) !== -1
+                            })
+                            break;
+                        case "水果":
+                            arr = arr.filter(p => {
+                                return p.category.indexOf(this.selectedCategory) !== -1;
+                            })
+                            break;
+                        case "蔬菜":
+                            arr = arr.filter(p => {
+                                return p.category.indexOf(this.selectedCategory) !== -1;
+                            })
+                            break;
+                    }
 
                     //判斷是否需要排序
-                    if(this.sortType){
-                        arr.sort((p1,p2) => {
-                            return this.sortType === 1? p2.age-p1.age:p1.age-p2.age
+                    if (this.sortType) {
+                        arr.sort((p1, p2) => {
+                            return this.sortType === 1 ? p2.amount - p1.amount : 0;
                         })
                     }
                     return arr
@@ -191,12 +240,3 @@
 </body>
 
 </html>
-
-
-<!-- <div class="filter">
-                <i class='bx bx-filter'></i>
-                More Filter
-            </div> -->
-<!-- <div class="Sort">
-                    <i class='bx bx-sort-a-z searchIcon'></i>Sort
-            </div> -->

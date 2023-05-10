@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SuFood</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!--==================== Boxicons ====================-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="col-2">
+        <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1>SuFoodlIFE<span>.</span></h1>
+        </a>
+      </div>
+
+      <div class="col-8 d-flex justify-content-center">
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="#">首頁</a></li>
+            <li><a href="#">零售購買</a></li>
+            <li><a href="#">自由選</a></li>
+            <li><a href="#">訂閱購買</a></li>
+            <li><a href="#">客戶分享</a></li>
+            <li><a href="#">購物車</a></li>
+          </ul>
+        </nav>
+      </div>
+
+
+      <div class="col-2">
+        <div class="header__icon__container">
+          <div class="userBox iconBox">
+            <i class='bx bx-user icon'></i>
+            <div class="users__info">
+              <a href="#"><span>訂單管理</span> </a>
+              <hr>
+              <a href="#"><span>我的優惠券</span></a>
+              <hr>
+              <a href="#"><span>帳戶設定</span></a>
+              <hr>
+              <a href="#"><span>登入</span> </a>
+              <!-- 如果是登入狀態顯示這個 -->
+              <!-- <hr>
+                        <a href="#"><span>登出</span> </a> -->
+            </div>
+          </div>
+          <div class="cartsBox iconBox"><i class='bx bx-cart icon'></i></div>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <!--========= 自由選 =========-->
+  <main id="main">
+    <!-- ======= Sub Header ======= -->
+    <div class="sub__hader container-fluid">
+      <h2 class="sub__hader__title text-center">自由選</h2>
+      <h4 class="sub__hader__subtitle text-center">打造你的專屬零食櫃</h4>
+      <div class="steps__container">
+        <div class="steps-line"></div>
+        <ul class="steps">
+          <li class="step">
+            <div class="step-content planChoice">
+              <span class="step-circle">1</span>
+              <span class="step-text">選擇方案</span>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-content match">
+              <span class="step-circle">2</span>
+              <span class="step-text">搭配您的產品</span>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-content confirm">
+              <span class="step-circle">3</span>
+              <span class="step-text">確認訂購資訊</span>
+            </div>
+          </li>
+          <!-- <li class="step">
+            <div class="step-content checkout">
+              <span class="step-circle">4</span>
+              <span class="step-text">結帳</span>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <!--========= 方案選擇 =========-->
+    <section class="planChoice d-flex align-items-center section-bg" id="planChoice">
+      <div class="planChoice__container">
+        <div class="title__container text-center">
+          選擇方案          
+        </div>
+        <div class="content__container">
+          <div class="row d-flex justify-content-around align-content-center">
+            <template>
+              <div v-for="plan in plans" class="card col-4" @click="selectedPlan(plan)">
+                <h2>{{plan.name}}</h2>
+                <p>{{plan.subtitle}}{{plan.itemQuantity}}</p>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--========= 搭配產品 =========-->
+    <section class="match d-flex align-items-center section-bg" id="match">
+      <div class="planChoice__container">
+        <div class="title__container text-center">
+          搭配您的產品
+          <span>可選數量 : {{TotalCountOfSelectedProduct}}/{{MaxSelectItems}}</span>
+        </div>
+        <div class="container d-flex justify-content-center mt-5 product__container">
+          <div class="row">
+            <template>
+              <div v-for="product in products" :key="product.id" class="col-md-3 mb-4">
+                <div class="product-wrapper mb-45 text-center">
+                  <div class="product-img">
+                    <img :src="product.imageUrl" alt=""><span class="text-center">{{product.name}}</span>
+                    <div class="product-action">
+                      <div class="product-action-style">
+                        <i class='bx bx-minus-circle' @click="decrementQuantity(product)"></i>
+                        <span>{{productQuantities[product.id]}}</span>
+                        <i class='bx bx-plus-circle' @click="incrementQuantity(product)"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+    </section>
+    <!--========= 確認 =========-->
+    <section class="confirm d-flex align-items-center section-bg" id="confirm">
+      <div class="planChoice__container">
+        <div class="title__container text-center">
+          確認訂購資訊
+        </div>
+        <div class="content__container">
+          <div class="confirm__container">
+            <ul v-for="product in selectProduct">
+              <li class="confirmItems">
+                <h1>{{product.name}}</h1>
+                <p>{{productQuantities[product.id]}}個</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checkout">
+            <a href="#"><button class="bn632-hover bn28">結帳</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="./assets/js/vue.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/freeChoice.js"></script>
+
+  <script>
+    new Vue({
+      el: "#main",
+      data: {
+        products: [
+          { id: 1, name: '香蕉', imageUrl: './assets/img/resources/banana.jpg' },
+          { id: 2, name: '芭樂', imageUrl: './assets/img/resources/grava.jpg' },
+          { id: 3, name: '奇異果', imageUrl: './assets/img/resources/kiwi.jpg' },
+          { id: 4, name: '哈密瓜', imageUrl: './assets/img/resources/melon.jpg' },
+          { id: 5, name: '鳳梨', imageUrl: './assets/img/resources/ownlei.jpg' },
+          { id: 6, name: '堅果', imageUrl: './assets/img/resources/nut.jpg' },
+          { id: 7, name: '巧克力', imageUrl: './assets/img/resources/chocolate (2).jpg' },
+          { id: 8, name: 'OREO', imageUrl: './assets/img/resources/chocolate (3).jpg' },
+        ],
+        plans:[
+          {id: 1, name: '小資方案', itemQuantity: 15, subtitle: '普通商品20選'},
+          {id: 2, name: '高級方案', itemQuantity: 20, subtitle: '普通商品30選'},
+          {id: 3, name: '奢華方案', itemQuantity: 30, subtitle: '普通商品40選'},
+        ],
+        productQuantities: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 },
+        MaxSelectItems: 20,
+      },
+      methods: {
+        ScrollAction() {
+          const sections = document.querySelectorAll('section[id]')
+          const scrollY = window.pageYOffset
+          sections.forEach(current => {
+            const sectionHeight = current.offsetHeight
+            const sectionTop = current.offsetTop - 300;
+            sectionId = current.getAttribute('id')
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+              document.querySelector('.step-content.' + sectionId + ' .step-circle').classList.add('stepColor')
+            } else {
+              document.querySelector('.step-content.' + sectionId + ' .step-circle').classList.remove('stepColor')
+            }
+          })
+        },
+        ToNextSection(id) {
+          var section = document.getElementById(id);
+          section.scrollIntoView();
+        },
+        incrementQuantity(product) {
+          if(this.TotalCountOfSelectedProduct < this.MaxSelectItems){
+            this.productQuantities[product.id] += 1 // 增加相应产品的数量            
+          }          
+          this.setImgOpacity(product.id)
+          if(this.TotalCountOfSelectedProduct == this.MaxSelectItems){
+            this.ToNextSection("confirm")
+          }
+        },
+        decrementQuantity(product) {
+          if (this.productQuantities[product.id] > 0) {
+            this.productQuantities[product.id] -= 1 // 减少相应产品的数量
+          }
+          this.setImgOpacity(product.id)
+        },
+        selectedPlan(plan){
+          this.MaxSelectItems = plan.itemQuantity;
+          this.resetItemQuantity()
+          this.ToNextSection('match')
+        },
+        resetItemQuantity(){
+          const keys = Object.keys(this.productQuantities)
+          keys.forEach(key => {
+            this.productQuantities[key] = 0;
+          })
+          const item = document.querySelectorAll(".product-img img")
+          item.forEach(i => i.style.opacity = 0.5)
+        },
+        setImgOpacity(productId){
+          const item = document.querySelectorAll(".product-img img")[productId - 1]
+          if (this.productQuantities[productId] > 0) {
+            item.style.opacity = 1
+          }else{
+            item.style.opacity = 0.5
+          }          
+        }
+      },
+      computed:{
+        TotalCountOfSelectedProduct(){
+          return Object.values(this.productQuantities).reduce((sum, value) => sum + value, 0)
+        },
+        
+        selectProduct(){
+          let arr = Object.keys(this.productQuantities).filter(key => {
+              return this.productQuantities[key] !== 0;}).map(Number)
+
+          return this.products.filter(p => arr.includes(p.id));
+        }
+      },
+      mounted() {
+        window.addEventListener('scroll', this.ScrollAction)
+      }
+    })
+  </script>
+</body>
+
+</html>

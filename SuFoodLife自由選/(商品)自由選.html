@@ -130,13 +130,21 @@
           選擇方案          
         </div>
         <div class="content__container">
-          <div class="row d-flex justify-content-around align-content-center">
+          <!-- <div class="row d-flex justify-content-around align-content-center">
             <template>
               <div v-for="plan in plans" class="card col-4" @click="selectedPlan(plan)">
                 <h2>{{plan.name}}</h2>
                 <p>{{plan.subtitle}}{{plan.itemQuantity}}</p>
               </div>
             </template>
+          </div> -->
+          <div class="row d-flex justify-content-around align-content-center">
+              <div v-for="plan in plans" class="card col-lg-4">
+                <h5 class="card__title">{{plan.name}}</h5>
+                <h1 class="card__preice">${{plan.price}}</h1>
+                <p class="card__desc">{{plan.subtitle}}{{plan.itemQuantity}}</p>
+                <button @click="selectedPlan(plan)" class="card__button">選擇方案</button>
+              </div>
           </div>
         </div>
       </div>
@@ -151,7 +159,7 @@
         <div class="container d-flex justify-content-center mt-5 product__container">
           <div class="row">
             <template>
-              <div v-for="product in products" :key="product.id" class="col-md-3 mb-4">
+              <div v-for="product in products" :key="product.id" class="col-lg-2 col-md-3 mb-4">
                 <div class="product-wrapper mb-45 text-center">
                   <div class="product-img">
                     <img :src="product.imageUrl" alt=""><span class="text-center">{{product.name}}</span>
@@ -222,15 +230,22 @@
           { id: 4, name: '哈密瓜', imageUrl: './assets/img/resources/melon.jpg' },
           { id: 5, name: '鳳梨', imageUrl: './assets/img/resources/ownlei.jpg' },
           { id: 6, name: '堅果', imageUrl: './assets/img/resources/nut.jpg' },
-          { id: 7, name: '巧克力', imageUrl: './assets/img/resources/chocolate (2).jpg' },
+          { id: 7, name: '金莎', imageUrl: './assets/img/resources/chocolate (2).jpg' },
           { id: 8, name: 'OREO', imageUrl: './assets/img/resources/chocolate (3).jpg' },
+          { id: 9, name: '建達繽紛樂', imageUrl: './assets/img/resources/chocolate (4).jpg' },
+          { id: 10, name: '蝦餅', imageUrl: './assets/img/resources/snake.jpg' },
+          { id: 11, name: '可樂果(原味)', imageUrl: './assets/img/resources/snake (2).jpg' },
+          { id: 12, name: '可樂果(酷辣)', imageUrl: './assets/img/resources/snake (3).jpg' },
+          { id: 13, name: '樂事洋芋片(酥脆海苔)', imageUrl: './assets/img/resources/sanke (4).jpg' },
+          { id: 14, name: '樂事洋芋片(唐辛子)', imageUrl: './assets/img/resources/sanke (5).jpg' },
+          { id: 15, name: '樂事洋芋片(炭烤豬排)', imageUrl: './assets/img/resources/sanke (6).jpg' },
         ],
         plans:[
-          {id: 1, name: '小資方案', itemQuantity: 15, subtitle: '普通商品20選'},
-          {id: 2, name: '高級方案', itemQuantity: 20, subtitle: '普通商品30選'},
-          {id: 3, name: '奢華方案', itemQuantity: 30, subtitle: '普通商品40選'},
+          {id: 1, name: '小資方案',price:"300", itemQuantity: 15, subtitle: '熱門商品20選'},
+          {id: 2, name: '高級方案',price:"500", itemQuantity: 20, subtitle: '精選30選'},
+          {id: 3, name: '奢華方案',price:"700", itemQuantity: 30, subtitle: '隱藏商品40選'},
         ],
-        productQuantities: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 },
+        productQuantities: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13:0, 14:0, 15:0 },
         MaxSelectItems: 20,
       },
       methods: {

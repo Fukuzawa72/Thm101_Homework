@@ -381,6 +381,7 @@ section {
   border-radius: 4px;
   width: 200px;
   padding: 1rem;
+  z-index: 1000;
 }
 
 .users__info a {
@@ -1981,10 +1982,11 @@ li {
   height: 100%;
 }
 
+
+
 .content__container .card {
   backdrop-filter: blur(6px);
-  background: rgb(255, 205, 0);
-  background: linear-gradient(90deg, rgba(255, 205, 0, 1) 0%, rgba(255, 184, 0, 1) 60%, rgba(255, 141, 0, 1) 100%);
+  background: #fff;
   color: #000;
   font-weight: bold;
   border-radius: 26px;
@@ -1992,25 +1994,42 @@ li {
   height: 300px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  transition: all .2s ease-in-out;
+}
+
+.card__title{
+  font-size: 30px;
+  font-weight: bolder;
+}
+.card__preice{
+  font-weight: bold;
+}
+.card__desc{
+  
+}
+
+.card__button{
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  transition: all .5s;
 }
 
 .title__container {
   margin-top: 6vh;
 }
 
-/* .planChoice__container .title__container {
-  margin-top: 20vh;
-} */
-
 .content__container .card:hover {
   transform: translateY(-8px);
 }
 
+
+
 .stepColor {
-  background: rgb(255, 205, 0);
+  background: #F9BC61;
 }
 
 /* 搭配產品 */
@@ -2160,15 +2179,13 @@ li {
 .confirm__container{
   margin-top: 3rem;
   width: 80%;
-  min-height: 100%;
-  border-radius: 50px;
-background: linear-gradient(145deg, #f0f0f0, #cacaca);
-box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+  height: 100%;
+  background: #fff;
+  border-radius: 1rem;
 }
 
 .confirmItems{
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }

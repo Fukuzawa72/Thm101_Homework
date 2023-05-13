@@ -127,7 +127,7 @@
     <section class="planChoice d-flex align-items-center section-bg" id="planChoice">
       <div class="planChoice__container">
         <div class="title__container text-center">
-          選擇方案          
+          選擇方案
         </div>
         <div class="content__container">
           <!-- <div class="row d-flex justify-content-around align-content-center">
@@ -139,12 +139,12 @@
             </template>
           </div> -->
           <div class="row d-flex justify-content-around align-content-center">
-              <div v-for="plan in plans" class="card col-lg-4">
-                <h5 class="card__title">{{plan.name}}</h5>
-                <h1 class="card__preice">${{plan.price}}</h1>
-                <p class="card__desc">{{plan.subtitle}}{{plan.itemQuantity}}</p>
-                <button @click="selectedPlan(plan)" class="card__button">選擇方案</button>
-              </div>
+            <div v-for="plan in plans" class="card col-lg-4">
+              <h5 class="card__title">{{plan.name}}</h5>
+              <h1 class="card__preice">${{plan.price}}</h1>
+              <p class="card__desc">{{plan.subtitle}}{{plan.itemQuantity}}</p>
+              <button @click="selectedPlan(plan)" class="card__button">選擇方案</button>
+            </div>
           </div>
         </div>
       </div>
@@ -154,12 +154,12 @@
       <div class="planChoice__container">
         <div class="title__container text-center">
           搭配您的產品
-          <span>可選數量 : {{TotalCountOfSelectedProduct}}/{{MaxSelectItems}}</span>
+          <span v-if="choicePlan">可選數量 : {{TotalCountOfSelectedProduct}}/{{MaxSelectItems}}</span>
         </div>
         <div class="container d-flex justify-content-center mt-5 product__container">
           <div class="row">
-            <template>
-              <div v-for="product in products" :key="product.id" class="col-lg-2 col-md-3 mb-4">
+            <template v-if="choicePlan">
+              <div v-for="product in showProducts" :key="product.id" class="col-lg-2 col-md-3 mb-4">
                 <div class="product-wrapper mb-45 text-center">
                   <div class="product-img">
                     <img :src="product.imageUrl" alt=""><span class="text-center">{{product.name}}</span>
@@ -174,6 +174,9 @@
                 </div>
               </div>
             </template>
+            <template v-if="!choicePlan">
+              <h2>請先選擇方案!</h2>
+            </template>
           </div>
         </div>
     </section>
@@ -184,19 +187,25 @@
           確認訂購資訊
         </div>
         <div class="content__container">
-          <div class="confirm__container">
-            <ul v-for="product in selectProduct">
-              <li class="confirmItems">
-                <h1>{{product.name}}</h1>
-                <p>{{productQuantities[product.id]}}個</p>
-              </li>
-            </ul>
+          <div class="confirm__container col-3">
+            <h2 class="mt-3">{{choicePlan.name}}</h2>
+            <div class="confirmItems__container col-10">
+              <ul>
+                <li class="confirmItems" v-for="product in selectProduct">
+                  <h1 class="confirmItems-Name">{{product.name}}</h1>
+                  <p class="confirmItems-Quant">{{productQuantities[product.id]}}<span>個</span></p>                    
+                </li>
+              </ul>
+            </div>
+            <div v-show="choicePlan" class="confirm-line"></div>
+            <h2 v-show="choicePlan">${{choicePlan.price}}</h2>        
           </div>
 
           <div class="checkout">
             <a href="#"><button class="bn632-hover bn28">結帳</button></a>
           </div>
         </div>
+        
       </div>
     </section>
   </main><!-- End #main -->
@@ -239,14 +248,15 @@
           { id: 13, name: '樂事洋芋片(酥脆海苔)', imageUrl: './assets/img/resources/sanke (4).jpg' },
           { id: 14, name: '樂事洋芋片(唐辛子)', imageUrl: './assets/img/resources/sanke (5).jpg' },
           { id: 15, name: '樂事洋芋片(炭烤豬排)', imageUrl: './assets/img/resources/sanke (6).jpg' },
+        ],        
+        plans: [
+          { id: 1, name: '小資方案', price: "300", itemQuantity: 5, subtitle: '熱門商品20選' },
+          { id: 2, name: '高級方案', price: "500", itemQuantity: 10, subtitle: '精選30選' },
+          { id: 3, name: '奢華方案', price: "700", itemQuantity: 15, subtitle: '隱藏商品40選' },
         ],
-        plans:[
-          {id: 1, name: '小資方案',price:"300", itemQuantity: 15, subtitle: '熱門商品20選'},
-          {id: 2, name: '高級方案',price:"500", itemQuantity: 20, subtitle: '精選30選'},
-          {id: 3, name: '奢華方案',price:"700", itemQuantity: 30, subtitle: '隱藏商品40選'},
-        ],
-        productQuantities: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13:0, 14:0, 15:0 },
+        productQuantities: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0 },
         MaxSelectItems: 20,
+        choicePlan: "",
       },
       methods: {
         ScrollAction() {
@@ -269,11 +279,11 @@
           section.scrollIntoView();
         },
         incrementQuantity(product) {
-          if(this.TotalCountOfSelectedProduct < this.MaxSelectItems){
+          if (this.TotalCountOfSelectedProduct < this.MaxSelectItems) {
             this.productQuantities[product.id] += 1 // 增加相应产品的数量            
-          }          
+          }
           this.setImgOpacity(product.id)
-          if(this.TotalCountOfSelectedProduct == this.MaxSelectItems){
+          if (this.TotalCountOfSelectedProduct == this.MaxSelectItems) {
             this.ToNextSection("confirm")
           }
         },
@@ -283,38 +293,44 @@
           }
           this.setImgOpacity(product.id)
         },
-        selectedPlan(plan){
+        selectedPlan(plan) {
           this.MaxSelectItems = plan.itemQuantity;
+          this.choicePlan = plan
           this.resetItemQuantity()
           this.ToNextSection('match')
         },
-        resetItemQuantity(){
+        resetItemQuantity() {
           const keys = Object.keys(this.productQuantities)
           keys.forEach(key => {
             this.productQuantities[key] = 0;
           })
           const item = document.querySelectorAll(".product-img img")
           item.forEach(i => i.style.opacity = 0.5)
+
         },
-        setImgOpacity(productId){
+        setImgOpacity(productId) {
           const item = document.querySelectorAll(".product-img img")[productId - 1]
           if (this.productQuantities[productId] > 0) {
             item.style.opacity = 1
-          }else{
+          } else {
             item.style.opacity = 0.5
-          }          
+          }
         }
       },
-      computed:{
-        TotalCountOfSelectedProduct(){
+      computed: {
+        TotalCountOfSelectedProduct() {
           return Object.values(this.productQuantities).reduce((sum, value) => sum + value, 0)
         },
-        
-        selectProduct(){
+
+        selectProduct() {
           let arr = Object.keys(this.productQuantities).filter(key => {
-              return this.productQuantities[key] !== 0;}).map(Number)
+            return this.productQuantities[key] !== 0;
+          }).map(Number)
 
           return this.products.filter(p => arr.includes(p.id));
+        },
+        showProducts(){
+          return this.products.slice(0, this.choicePlan.itemQuantity)
         }
       },
       mounted() {

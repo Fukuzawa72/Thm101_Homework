@@ -2005,9 +2005,6 @@ li {
 .card__preice{
   font-weight: bold;
 }
-.card__desc{
-  
-}
 
 .card__button{
   padding: 1rem 2rem;
@@ -2178,14 +2175,62 @@ li {
 
 .confirm__container{
   margin-top: 3rem;
-  width: 80%;
-  height: 100%;
   background: #fff;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  border: 1px solid #000;
+  height: 450px;
+  overflow: hidden;
 }
 
 .confirmItems{
   display: flex;
   justify-content: start;
   align-items: center;
+}
+
+/*========== Confirm Section ==========*/
+.confirmItems__container{
+  overflow-y: auto;
+  height: 70%;
+  z-index: 0;
+}
+
+
+.confirm__container-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmItems{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirmItems .confirmItems-Name{
+  font-size: 1.2rem;
+}
+.confirmItems .confirmItems-Quant{
+  font-size: 1.6rem;
+}
+.confirmItems .confirmItems-Quant span{
+  font-size: 1rem;
+}
+
+.confirm .planChoice__container{
+  height: 100vh;
+}
+
+.confirm .content__container{
+  height: 0;
+}
+
+.confirm-line{
+  width: 90%;
+  border: .3px solid #000;
 }
